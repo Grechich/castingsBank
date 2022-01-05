@@ -1,0 +1,9 @@
+body {
+background-color: azure;
+}
+H1, H2 {
+    color: lightgray;
+}
+div{
+    border-radius: 3px;
+}
