@@ -15,22 +15,22 @@ public class Documentation {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String detailDrawing;
-
     @OneToOne(mappedBy = "documentation", cascade = CascadeType.ALL)
     private Casting casting;
 
-//    private String detailDrawing3D;
-//    private String castingDrawing;
-//    private String castingDrawing3D;
-//    private String installationDrawing;
-//    private String passportBlank;
+    private String detailDrawing;
+    private String detailDrawing3D;
+    private String castingDrawing;
+    private String castingDrawing3D;
+    private String installationDrawing;
+    private String passportBlank;
 
-
-    public Documentation(String detailDrawing) {
-        this.detailDrawing = detailDrawing;
+    public Documentation(String drawing) {
+        this.detailDrawing = "../../docs/drawings/" + drawing + "/detail_drawing_" + drawing + ".jpg";
+        this.detailDrawing3D = "../../docs/drawings/" + drawing + "/detail_drawing_" + drawing + "3d.zip";
+        this.castingDrawing = "../../docs/drawings/" + drawing + "/casting_drawing_" + drawing + ".jpg";
+        this.castingDrawing3D = "../../docs/drawings/" + drawing + "/casting_drawing_" + drawing + "3d.zip";
+        this.installationDrawing = "../../docs/drawings/" + drawing + "/installation_drawing_" + drawing + ".jpg";
+        this.passportBlank = "../../docs/drawings/" + drawing + "/passport_" + drawing + ".jpg";
     }
-
-
-
 }

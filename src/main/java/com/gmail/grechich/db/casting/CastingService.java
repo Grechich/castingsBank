@@ -46,6 +46,10 @@ public class CastingService {
         return castings;
     }
 
+    public Casting getCastingsByDrawing(String drawing) {
+        return castingRepository.findByDrawingNumber(drawing);
+    }
+
 //    @Transactional
 //    public List<Casting> getCastingsBySearch(String search) {
 //        return castingRepository.getCastingsBySearch(search);

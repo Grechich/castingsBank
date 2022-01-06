@@ -84,24 +84,29 @@
                 <li class="nav-item">
                     <c:url value="/addCasting" var="addCastingUrl"/>
                     <form action="${addCastingUrl}" method="POST">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add casting</button>
+                        <button class="btn btn-outline-success btn-sm" type="submit">Add casting</button>
                     </form>
                 </li>
 
                 <li class="nav-item">
                     <c:url value="/register" var="register"/>
                     <form action="${register}">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register new user</button>
+                        <button class="btn btn-outline-success btn-sm" type="submit">Register new user</button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <c:url value="/allUsers" var="users"/>
+                    <form action="${users}">
+                        <button class="btn btn-outline-success btn-sm" type="submit">Show all users</button>
                     </form>
                 </li>
             </c:if>
-
         </ul>
         <c:url value="/search" var="searching"/>
         <form class="form-inline" action="${searching}" method="get">
             <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search"
                    aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
         </form>
     </div>
 </nav>
@@ -154,7 +159,7 @@
 </div>
 <!--Data-->
 
-<div class="footer fixed-bottom text-center">
+<div class="footer text-center">
     <div class="btn-group" role="group" aria-label="Basic example">
         <c:url value="/logout" var="logoutUrl"/>
         <form action="${logoutUrl}">

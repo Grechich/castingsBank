@@ -84,14 +84,20 @@
                 <li class="nav-item">
                     <c:url value="/addCasting" var="addCastingUrl"/>
                     <form action="${addCastingUrl}" method="POST">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add casting</button>
+                        <button class="btn btn-outline-success btn-sm" type="submit">Add casting</button>
                     </form>
                 </li>
 
                 <li class="nav-item">
                     <c:url value="/register" var="register"/>
                     <form action="${register}">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register new user</button>
+                        <button class="btn btn-outline-success btn-sm" type="submit">Register new user</button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <c:url value="/allUsers" var="users"/>
+                    <form action="${users}">
+                        <button class="btn btn-outline-success btn-sm" type="submit">Show all users</button>
                     </form>
                 </li>
             </c:if>
@@ -100,7 +106,7 @@
         <form class="form-inline" action="${searching}" method="get">
             <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search"
                    aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
         </form>
     </div>
 </nav>
@@ -110,39 +116,94 @@
 <!--Data-->
 <div class="container">
 
-    <table class="table table-striped table-dark">
-
+    <table class="table table-striped table-light">
+        <thead class="thead-dark">
         <tr>
-            <td>Проект</td>
-            <td>Чертеж детали</td>
-            <td>Чертеж отливки</td>
-            <td>3Д чертеж модели</td>
+            <td>Название:</td>
+            <td><c:out value="${casting.name}"/></td>
+            <c:if test="${admin}">
+                <c:url value="/update?name=${casting.name}" var="update"/>
+                <td>
+                    <form action="${update}" method="Post">
+                        <input type="text" name="name" value="${casting.name}">
+                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>
+                    </form>
+                </td>
+            </c:if>
+        </tr>
+        </thead>
+        <tr>
+            <td>Цех:</td>
+            <td><c:out value="${casting.castingShopEnum.getShopName()}"/></td>
 
         </tr>
         <tr>
-            <td></td>
-            <td><a href="<c:out value="${detailDrawing}"/>" target="_blank">Чертеж детали</a></td>
-            <td><a href="<c:out value="${castingDrawing}"/>" target="_blank">Чертеж отливки</a></td>
-            <td><a href="<c:out value="${model3d}"/>" download="">3Д модель</a></td>
-
+            <td>Тип:</td>
+            <td><c:out value="${casting.castingTypeEnum.getType()}"/></td>
         </tr>
+        <tr>
+            <td>Рельс:</td>
+            <td><c:out value="${casting.castingRailEnum.getRailName()}"/></td>
+        </tr>
+        <tr>
+            <td>Масса:</td>
+            <td><c:out value="${casting.castingWeight}"/></td>
+            <c:if test="${admin}">
+                <c:url value="/update?castingWeight=${casting.castingWeight}" var="update"/>
+                <td>
+                    <form action="${update}" method="Post">
+                        <input type="text" name="castingWeight" value="${casting.castingWeight}">
+                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>
+                    </form>
+                </td>
+            </c:if>
+        </tr>
+        <tr>
+            <td>Марка стали:</td>
+            <td><c:out value="${casting.steelGrade.getSteelGrate()}"/></td>
+        </tr>
+        <tr>
+            <td>Чертеж детали:</td>
+            <td><a href="<c:out value="${detailDrawing}"/>" target="_blank">Открыть</a></td>
+        </tr>
+        <tr>
+            <td>Чертеж отливки:</td>
+            <td><a href="<c:out value="${castingDrawing}"/>" target="_blank">Открыть</a></td>
+        </tr>
+        <c:forEach items="${casting.modls}" var="modl">
+            <tr>
+                <td>3Д модель:</td>
+                <td><a href="<c:out value="${modl.modelDrawing3D}"/>" download="">Скачать</a></td>
+            </tr>
+        </c:forEach>
 
+        <c:if test="${admin}">
+            <c:url value="/addModel" var="addModel"/>
+            <tr>
+                <td>Добавить 3Д модель:</td>
+                <td>
+                    <form action="${addModel}" method="Post">
+                        <button class="btn btn-outline-success btn-sm" type="submit">Добавить</button>
+                    </form>
+                </td>
+            </tr>
+        </c:if>
     </table>
 </div>
 <!--Data-->
 
-    <div class="footer fixed-bottom text-center">
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <c:url value="/logout" var="logoutUrl"/>
-            <form action="${logoutUrl}">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">logout</button>
-            </form>
-            <c:url value="/" var="index"/>
-            <form action="${index}">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
-            </form>
-        </div>
+<div class="footer text-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <c:url value="/logout" var="logoutUrl"/>
+        <form action="${logoutUrl}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">logout</button>
+        </form>
+        <c:url value="/" var="index"/>
+        <form action="${index}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
+        </form>
     </div>
+</div>
 </body>
 <link rel="stylesheet" type="text/css" href="../../style.css">
 

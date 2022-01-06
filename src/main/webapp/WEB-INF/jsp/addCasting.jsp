@@ -83,14 +83,20 @@
                 <li class="nav-item">
                     <c:url value="/addCasting" var="addCastingUrl"/>
                     <form action="${addCastingUrl}" method="POST">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add casting</button>
+                        <button class="btn btn-outline-success btn-sm" type="submit">Add casting</button>
                     </form>
                 </li>
 
                 <li class="nav-item">
                     <c:url value="/register" var="register"/>
                     <form action="${register}">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register new user</button>
+                        <button class="btn btn-outline-success btn-sm" type="submit">Register new user</button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <c:url value="/allUsers" var="users"/>
+                    <form action="${users}">
+                        <button class="btn btn-outline-success btn-sm" type="submit">Show all users</button>
                     </form>
                 </li>
             </c:if>
@@ -99,7 +105,7 @@
         <form class="form-inline" action="${searching}" method="get">
             <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search"
                    aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
         </form>
     </div>
 </nav>
@@ -117,8 +123,8 @@
                 <div class="col-8" align="left"><input type="text" name="name" value="Отливка"></div>
             </div>
             <div class="row">
-                <div class="col-4" align="right">Чертеж:</div>
-                <div class="col-8" align="left"><input type="text" name="drawingNumber" value="Чертеж"></div>
+                <div class="col-4" align="right">Номер чертежа отливки:</div>
+                <div class="col-8" align="left"><input type="text" name="drawingNumber" value="31-"></div>
             </div>
             <div class="row">
                 <div class="col-4" align="right">Масса, кг:</div>
@@ -175,30 +181,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-4" align="right">Материал модели:</div>
-                <div class="col-8" align="left">
-                    <select class="form-select" aria-label="Default select example" name="modelMaterialEnum">
-                        <option selected value="OTHER">---</option>
-                        <option value="STEEL">Сталь</option>
-                        <option value="AL">Аллюминий</option>
-                        <option value="PLASTIC">Пластик</option>
-                        <option value="WOOD">Дерево</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4" align="right">Год модели:</div>
-                <div class="col-8" align="left"><input type="text" name="modelYear" value="2022"></div>
-            </div>
-            <div class="row">
-                <div class="col-4" align="right">3Д модели:</div>
-                <div class="col-8" align="left"><input type="text" name="modelDrawing3D" value="3Д"></div>
-            </div>
-            <div class="row">
-                <div class="col-4" align="right">Чертеж детали:</div>
-                <div class="col-8" align="left"><input type="text" name="detailDrawing" value="Деталь"></div>
-            </div>
-            <div class="row">
                 <div class="col-4" align="right"></div>
                 <div class="col-8" align="left"><input type="submit"/></div>
             </div>
@@ -208,7 +190,7 @@
 </div>
 <!--Data-->
 
-<div class="footer fixed-bottom text-center">
+<div class="footer text-center">
     <div class="btn-group" role="group" aria-label="Basic example">
         <c:url value="/logout" var="logoutUrl"/>
         <form action="${logoutUrl}">

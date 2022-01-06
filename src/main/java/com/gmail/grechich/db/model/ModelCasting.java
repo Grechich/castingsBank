@@ -16,17 +16,18 @@ public class ModelCasting {
     @Column(name = "modelId", nullable = false)
     private Long modelId;
 
-    private Enum <ModelMaterial> modelMaterialEnum;
-    private String modelYear;
-    private String modelDrawing3D;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="casting_id", referencedColumnName = "id")
     private Casting casting;
 
-    public ModelCasting(Enum<ModelMaterial> modelMaterialEnum, String modelYear, String modelDrawing3D) {
-        this.modelMaterialEnum = modelMaterialEnum;
-        this.modelYear = modelYear;
-        this.modelDrawing3D = modelDrawing3D;
+    private Enum <ModelMaterial> modelMaterialEnum;
+    private String modelYear;
+    private String modelDrawing3D;
+
+    public ModelCasting(String drawing, int count) {
+        this.modelMaterialEnum = ModelMaterial.OTHER;
+        this.modelYear = "0";
+        this.modelDrawing3D = "../../docs/drawings/" + drawing + "/model3d_" + drawing + "_" + count + ".zip";
     }
+
 }

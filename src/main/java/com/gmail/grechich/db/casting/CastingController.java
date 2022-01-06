@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -20,11 +21,9 @@ import java.util.List;
 public class CastingController {
 
     private CastingService castingService;
-    private ModelService modelService;
 
     public CastingController(CastingService castingService, ModelService modelService) {
         this.castingService = castingService;
-        this.modelService = modelService;
     }
 
     @PostMapping("/saveCasting")
@@ -35,16 +34,12 @@ public class CastingController {
                               @RequestParam(required = false) String castingTypeEnum,
                               @RequestParam(required = false) String castingRailEnum,
                               @RequestParam(required = false) String castingShopEnum,
-                              @RequestParam(required = false) String modelMaterialEnum,
-                              @RequestParam(required = false) String modelYear,
-                              @RequestParam(required = false) String modelDrawing3D,
-                              @RequestParam(required = false) String detailDrawing,
                               Model model
     ) {
         List<ModelCasting> models = new ArrayList<>();
-        ModelCasting modelCasting = new ModelCasting(ModelMaterial.valueOf(modelMaterialEnum), modelYear, modelDrawing3D);
+        ModelCasting modelCasting = new ModelCasting(drawingNumber, 1);
         models.add(modelCasting);
-        Documentation documentation = new Documentation(detailDrawing);
+        Documentation documentation = new Documentation(drawingNumber);
         Casting casting = new Casting(name, drawingNumber, castingWeight, SteelGrade.valueOf(steelGrade),
                 CastingType.valueOf(castingTypeEnum), Rail.valueOf(castingRailEnum), Shop.valueOf(castingShopEnum),
                 models, documentation);
@@ -61,12 +56,14 @@ public class CastingController {
         return "addCasting";
     }
 
-
     @PostMapping("/castingPage")
-    public String casting(@RequestParam String drawing, Model model) {
-        String castingDrawingUrl = "../../docs/drawings/" + drawing + "/casting_drawing_" + drawing + ".jpg";
-        String detailDrawingUrl = "../../docs/drawings/" + drawing + "/detail_drawing_" + drawing + ".jpg";
-        String model3dUrl = "../../docs/drawings/" + drawing + "/model3d_" + drawing + ".zip";
+    public String casting(@RequestParam String drawing,
+                          Model model) {
+        Casting casting = castingService.getCastingsByDrawing(drawing);
+        String castingDrawingUrl = casting.getDocumentation().getCastingDrawing();
+        String detailDrawingUrl = casting.getDocumentation().getDetailDrawing();
+        String model3dUrl = casting.getModls().get(0).getModelDrawing3D();
+        model.addAttribute("casting", casting);
         model.addAttribute("castingDrawing", castingDrawingUrl);
         model.addAttribute("detailDrawing", detailDrawingUrl);
         model.addAttribute("model3d", model3dUrl);
@@ -112,6 +109,22 @@ public class CastingController {
         model.addAttribute("search", search);
         model.addAttribute("admin", isAdmin(getCurrentUser()));
         return "search";
+    }
+
+
+    @PostMapping("/update")
+    public String update(@RequestParam String drawing, Model model) {
+        model.addAttribute("casting", castingService.getCastingsByDrawing(drawing));
+
+                Casting casting = castingService.getCastingsByDrawing(drawing);
+        model.addAttribute("castingWeight", casting.getCastingWeight());
+        model.addAttribute("steelGrade", casting.getSteelGrade());
+        model.addAttribute("castingTypeEnum", casting.getCastingTypeEnum());
+        model.addAttribute("castingRailEnum", casting.getCastingRailEnum());
+        model.addAttribute("castingShopEnum", casting.getCastingShopEnum());
+        model.addAttribute("modls", casting.getModls());
+        model.addAttribute("admin", isAdmin(getCurrentUser()));
+        return "update";
     }
 
 

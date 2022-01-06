@@ -56,14 +56,13 @@
                         <div class="controls">
                             <button class="btn btn-success">Login</button>
                         </div>
-                        <c:if test="${param.error ne null}">
-                            <p>Wrong login or password!</p>
-                        </c:if>
-                        <c:if test="${param.logout ne null}">
-                            <p>Logout success</p>
-                        </c:if>
                     </div>
                 </form>
+                <div>
+                    <c:if test="${param.error ne null}">
+                        <p>Wrong login or password!</p>
+                    </c:if>
+                </div>
             </div>
         </div>
     </div>
@@ -71,10 +70,9 @@
 <%--Login--%>
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
 </body>
 <link rel="stylesheet" type="text/css" href="../../style.css">

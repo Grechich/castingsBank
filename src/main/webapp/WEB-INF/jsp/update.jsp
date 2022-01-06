@@ -7,7 +7,7 @@
 
     <meta charset="UTF-8">
 
-    <title>Bank of casting documentation</title>
+    <title>Castings</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -116,9 +116,83 @@
 <!--Data-->
 <div class="container">
 
-    <div class="container-fluid" >
-        <h1>Что-то пошло не так</h1>
-        <h2>Возможно отсутствует файл или у Вас нет прав доступа</h2>
+    <div align="center">
+        <c:url value="/update" var="update"/>
+
+        <form action="${update}" method="POST">
+
+            <div class="row">
+                <div class="col-4" align="right">
+                    Название
+                </div>
+                <div class="col-8" align="left">
+                    <input type="text" name="drawingNumber" value="<c:out value="${casting.name}"/> ">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4" align="right">Номер чертежа отливки:</div>
+                <div class="col-8" align="left"><input type="text" name="drawingNumber" value="${casting.drawingNumber}"></div>
+            </div>
+            <div class="row">
+                <div class="col-4" align="right">Масса, кг:</div>
+                <div class="col-8" align="left"><input type="text" name="castingWeight" value="0"></div>
+            </div>
+            <div class="row">
+                <div class="col-4" align="right">Марка стали:</div>
+                <div class="col-8" align="left">
+                    <select class="form-select" aria-label="Default select example" name="steelGrade">
+                        <option selected value="STEEL">---</option>
+                        <option value="STEEL20L">20Л</option>
+                        <option value="STEEL25L">25Л</option>
+                        <option value="STEEL30L">30Л</option>
+                        <option value="STEEL35L">35Л</option>
+                        <option value="STEEL40L">40Л</option>
+                        <option value="STEEL110G13L">110Г13Л</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4" align="right">Тип отливки:</div>
+                <div class="col-8" align="left">
+                    <select class="form-select" aria-label="Default select example" name="castingTypeEnum">
+                        <option selected value="OTHER">---</option>
+                        <option value="FROG">Крестовина</option>
+                        <option value="CORE">Сердечник</option>
+                        <option value="MONOBLOCK">Моноблок</option>
+                        <option value="PLATE">Плита</option>
+                        <option value="PAD">Подкладка</option>
+                        <option value="INSERT">Вкладыш</option>
+                        <option value="CLEAT">Клемма</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4" align="right">Тип рельса:</div>
+                <div class="col-8" align="left">
+                    <select class="form-select" aria-label="Default select example" name="castingRailEnum">
+                        <option selected value="OTHER">---</option>
+                        <option value="R65">Р65</option>
+                        <option value="R50">Р50</option>
+                        <option value="R43">Р43</option>
+                        <option value="R33">Р33</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4" align="right">Цех:</div>
+                <div class="col-8" align="left">
+                    <select class="form-select" aria-label="Default select example" name="castingShopEnum">
+                        <option selected value="SLC1">СЛЦ №1</option>
+                        <option value="SLC2">СЛЦ №2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4" align="right"></div>
+                <div class="col-8" align="left"><input type="submit"/></div>
+            </div>
+
+        </form>
     </div>
 </div>
 <!--Data-->
@@ -135,7 +209,7 @@
         </form>
     </div>
 </div>
-
 </body>
 <link rel="stylesheet" type="text/css" href="../../style.css">
+
 </html>
