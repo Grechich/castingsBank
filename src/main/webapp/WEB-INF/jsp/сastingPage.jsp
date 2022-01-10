@@ -122,7 +122,11 @@
             <td>Название:</td>
             <td><c:out value="${casting.name}"/></td>
             <c:if test="${admin}">
-                <c:url value="/update?name=${casting.name}" var="update"/>
+                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>
+                <c:out value="${casting.drawingNumber}"/>
+                <br>
+                <c:out value="${casting.name}"/>
+
                 <td>
                     <form action="${update}" method="Post">
                         <input type="text" name="name" value="${casting.name}">
@@ -149,7 +153,7 @@
             <td>Масса:</td>
             <td><c:out value="${casting.castingWeight}"/></td>
             <c:if test="${admin}">
-                <c:url value="/update?castingWeight=${casting.castingWeight}" var="update"/>
+                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>
                 <td>
                     <form action="${update}" method="Post">
                         <input type="text" name="castingWeight" value="${casting.castingWeight}">

@@ -50,6 +50,10 @@ public class CastingService {
         return castingRepository.findByDrawingNumber(drawing);
     }
 
+    public void updateCasting(Casting casting){
+        castingRepository.saveAndFlush(casting);
+    }
+
 //    @Transactional
 //    public List<Casting> getCastingsBySearch(String search) {
 //        return castingRepository.getCastingsBySearch(search);

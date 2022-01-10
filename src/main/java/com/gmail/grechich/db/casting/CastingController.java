@@ -113,18 +113,29 @@ public class CastingController {
 
 
     @PostMapping("/update")
-    public String update(@RequestParam String drawing, Model model) {
-        model.addAttribute("casting", castingService.getCastingsByDrawing(drawing));
+    public String update(@RequestParam String drawing,
+                         @RequestParam(required = false) String name,
+                         @RequestParam(required = false) String castingWeight,
+                         Model model) {
 
-                Casting casting = castingService.getCastingsByDrawing(drawing);
-        model.addAttribute("castingWeight", casting.getCastingWeight());
-        model.addAttribute("steelGrade", casting.getSteelGrade());
-        model.addAttribute("castingTypeEnum", casting.getCastingTypeEnum());
-        model.addAttribute("castingRailEnum", casting.getCastingRailEnum());
-        model.addAttribute("castingShopEnum", casting.getCastingShopEnum());
-        model.addAttribute("modls", casting.getModls());
-        model.addAttribute("admin", isAdmin(getCurrentUser()));
-        return "update";
+        Casting casting = castingService.getCastingsByDrawing(drawing);
+
+        if (castingWeight != null){
+            try {
+                casting.setCastingWeight(Double.parseDouble(castingWeight));
+            }catch (NumberFormatException e){
+                e.printStackTrace();
+                return "redirect:/allCastings";
+
+            }
+        }
+        if (name != null){
+            casting.setName(name);
+        }
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" +name);
+        castingService.updateCasting(casting);
+        return "redirect:/allCastings";
+//        return "redirect:/castingPage?drawing=${drawing}";
     }
 
 
