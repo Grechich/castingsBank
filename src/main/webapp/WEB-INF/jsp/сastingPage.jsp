@@ -4,12 +4,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-
     <meta charset="UTF-8">
-
     <title>Castings</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -21,7 +18,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-
 </head>
 <body>
 
@@ -63,7 +59,6 @@
                     <a class="dropdown-item" href="allCastings?type=PLATE">Плиты</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="allCastings?shop=SLC1">Вся продукция СЛЦ №1</a>
-
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -87,7 +82,6 @@
                         <button class="btn btn-outline-success btn-sm" type="submit">Add casting</button>
                     </form>
                 </li>
-
                 <li class="nav-item">
                     <c:url value="/register" var="register"/>
                     <form action="${register}">
@@ -112,21 +106,14 @@
 </nav>
 <!--Menu-->
 
-
 <!--Data-->
 <div class="container">
-
     <table class="table table-striped table-light">
-        <thead class="thead-dark">
         <tr>
             <td>Название:</td>
             <td><c:out value="${casting.name}"/></td>
             <c:if test="${admin}">
                 <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>
-                <c:out value="${casting.drawingNumber}"/>
-                <br>
-                <c:out value="${casting.name}"/>
-
                 <td>
                     <form action="${update}" method="Post">
                         <input type="text" name="name" value="${casting.name}">
@@ -135,11 +122,9 @@
                 </td>
             </c:if>
         </tr>
-        </thead>
         <tr>
             <td>Цех:</td>
             <td><c:out value="${casting.castingShopEnum.getShopName()}"/></td>
-
         </tr>
         <tr>
             <td>Тип:</td>
@@ -168,21 +153,37 @@
         </tr>
         <tr>
             <td>Чертеж детали:</td>
-            <td><a href="<c:out value="${detailDrawing}"/>" target="_blank">Открыть</a></td>
+            <td><a href="<c:out value="${casting.documentation.detailDrawing}"/>" target="_blank">Открыть</a></td>
         </tr>
         <tr>
             <td>Чертеж отливки:</td>
-            <td><a href="<c:out value="${castingDrawing}"/>" target="_blank">Открыть</a></td>
+            <td><a href="<c:out value="${casting.documentation.castingDrawing}"/>" target="_blank">Открыть</a></td>
+        </tr>
+        <tr>
+            <td>Монтажные чертежи:</td>
+            <td><a href="<c:out value="${casting.documentation.installationDrawing}"/>" target="_blank">Открыть</a></td>
+        </tr>
+        <tr>
+            <td>Паспорт отливки:</td>
+            <td><a href="<c:out value="${casting.documentation.passportBlank}"/>" target="_blank">Открыть</a></td>
+        </tr>
+        <tr>
+            <td>Чертеж детали 3Д:</td>
+            <td><a href="<c:out value="${casting.documentation.detailDrawing3D}"/>" target="_blank">Скачать</a></td>
+        </tr>
+        <tr>
+            <td>Чертеж отливки 3Д:</td>
+            <td><a href="<c:out value="${casting.documentation.castingDrawing3D}"/>" target="_blank">Скачать</a></td>
         </tr>
         <c:forEach items="${casting.modls}" var="modl">
             <tr>
-                <td>3Д модель:</td>
+                <td>3Д модель ${modl.modelId}:</td>
                 <td><a href="<c:out value="${modl.modelDrawing3D}"/>" download="">Скачать</a></td>
             </tr>
         </c:forEach>
 
         <c:if test="${admin}">
-            <c:url value="/addModel" var="addModel"/>
+            <c:url value="/addModel?drawing=${casting.drawingNumber}" var="addModel"/>
             <tr>
                 <td>Добавить 3Д модель:</td>
                 <td>

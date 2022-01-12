@@ -20,9 +20,4 @@ public interface CastingRepository extends JpaRepository<Casting, Long> {
 
     Casting findByDrawingNumber(String drawing);
 
-
-    //    @Query("SELECT u FROM Casting u WHERE u.name LIKE :search OR u.drawingNumber LIKE :search")
-//    List<Casting> getCastingsBySearch(@Param("search") String search);
-
-
 }

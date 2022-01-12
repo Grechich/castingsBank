@@ -54,8 +54,4 @@ public class CastingService {
         castingRepository.saveAndFlush(casting);
     }
 
-//    @Transactional
-//    public List<Casting> getCastingsBySearch(String search) {
-//        return castingRepository.getCastingsBySearch(search);
-//    }
 }

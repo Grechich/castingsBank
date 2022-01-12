@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .hasAnyRole("ADMIN")
                 .and()
                     .exceptionHandling()
-                    .accessDeniedPage("/error")
+                    .accessDeniedPage("/login")
                 .and()
                     .formLogin()
                     .loginPage("/login")

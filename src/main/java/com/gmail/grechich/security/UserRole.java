@@ -1,7 +1,7 @@
 package com.gmail.grechich.security;
 
 public enum UserRole {
-    ADMIN, USER, MODERATOR;
+    ADMIN, USER;
 
     @Override
     public String toString() {

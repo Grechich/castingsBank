@@ -10,7 +10,6 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -26,18 +25,6 @@ public class UserService {
     }
 
     @Transactional
-    public void deleteUsers(List<Long> ids) {
-        ids.forEach(id -> {
-            Optional<CustomUser> user = userRepository.findById(id);
-            user.ifPresent(u -> {
-                if ( ! AppConfig.ADMIN.equals(u.getLogin())) {
-                    userRepository.deleteById(u.getId());
-                }
-            });
-        });
-    }
-
-    @Transactional
     public boolean addUser(String login, String passHash, UserRole role) {
         if (userRepository.existsByLogin(login))
             return false;
@@ -46,13 +33,6 @@ public class UserService {
         return true;
     }
 
-    @Transactional
-    public void updateUser(String login) {
-        CustomUser user = userRepository.findByLogin(login);
-        if (user == null)
-            return;
-        userRepository.save(user);
-    }
 
     @Transactional
     public void deleteUser(Long id) {

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,14 +28,14 @@ public class CastingController {
     }
 
     @PostMapping("/saveCasting")
-    public String saveCasting(@RequestParam String name,
-                              @RequestParam String drawingNumber,
-                              @RequestParam(required = false) double castingWeight,
-                              @RequestParam(required = false) String steelGrade,
-                              @RequestParam(required = false) String castingTypeEnum,
-                              @RequestParam(required = false) String castingRailEnum,
-                              @RequestParam(required = false) String castingShopEnum,
-                              Model model
+    private String saveCasting(@RequestParam String name,
+                               @RequestParam String drawingNumber,
+                               @RequestParam(required = false) double castingWeight,
+                               @RequestParam(required = false) String steelGrade,
+                               @RequestParam(required = false) String castingTypeEnum,
+                               @RequestParam(required = false) String castingRailEnum,
+                               @RequestParam(required = false) String castingShopEnum,
+                               Model model
     ) {
         List<ModelCasting> models = new ArrayList<>();
         ModelCasting modelCasting = new ModelCasting(drawingNumber, 1);
@@ -51,22 +52,16 @@ public class CastingController {
     }
 
     @PostMapping("/addCasting")
-    public String addCasting(Model model) {
+    private String addCasting(Model model) {
         model.addAttribute("admin", isAdmin(getCurrentUser()));
         return "addCasting";
     }
 
     @PostMapping("/castingPage")
-    public String casting(@RequestParam String drawing,
-                          Model model) {
+    private String casting(@RequestParam String drawing,
+                           Model model) {
         Casting casting = castingService.getCastingsByDrawing(drawing);
-        String castingDrawingUrl = casting.getDocumentation().getCastingDrawing();
-        String detailDrawingUrl = casting.getDocumentation().getDetailDrawing();
-        String model3dUrl = casting.getModls().get(0).getModelDrawing3D();
         model.addAttribute("casting", casting);
-        model.addAttribute("castingDrawing", castingDrawingUrl);
-        model.addAttribute("detailDrawing", detailDrawingUrl);
-        model.addAttribute("model3d", model3dUrl);
         model.addAttribute("admin", isAdmin(getCurrentUser()));
         return "сastingPage";
     }
@@ -88,7 +83,6 @@ public class CastingController {
         model.addAttribute("admin", isAdmin(getCurrentUser()));
         if (type == null)
             return "allCastings";
-
         return "castings";
     }
 
@@ -96,61 +90,72 @@ public class CastingController {
     private String deleteCasting(@RequestParam Long id, Model model) {
         castingService.deleteCasting(id);
         model.addAttribute("admin", isAdmin(getCurrentUser()));
-        return "redirect:/allCastings";
+        return "forward:/allCastings";
     }
 
     @GetMapping("/search")
     private String searchCasting(@RequestParam(required = false) String search, Model model) {
         if (search.equals(""))
-            return "redirect:/allCastings";
+            return "forward:/allCastings";
         List<Casting> castings = castingService.searchCastings(search);
-//        List<Casting> castings = castingService.getCastingsBySearch(search);
         model.addAttribute("castings", castings);
         model.addAttribute("search", search);
         model.addAttribute("admin", isAdmin(getCurrentUser()));
         return "search";
     }
 
-
     @PostMapping("/update")
-    public String update(@RequestParam String drawing,
-                         @RequestParam(required = false) String name,
-                         @RequestParam(required = false) String castingWeight,
-                         Model model) {
-
+    private String update(@RequestParam String drawing,
+                          @RequestParam(required = false) String name,
+                          @RequestParam(required = false) String castingWeight,
+                          RedirectAttributes redirectAttributes) {
         Casting casting = castingService.getCastingsByDrawing(drawing);
 
-        if (castingWeight != null){
+        if (castingWeight != null) {
             try {
                 casting.setCastingWeight(Double.parseDouble(castingWeight));
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 e.printStackTrace();
-                return "redirect:/allCastings";
-
+                return "forward:/allCastings";
             }
         }
-        if (name != null){
+        if (name != null) {
             casting.setName(name);
         }
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" +name);
         castingService.updateCasting(casting);
-        return "redirect:/allCastings";
-//        return "redirect:/castingPage?drawing=${drawing}";
+        redirectAttributes.addAttribute("drawing", drawing);
+        return "forward:/castingPage";
+    }
+
+    @PostMapping("/addModel")
+    private String addModel(@RequestParam String drawing,
+                            RedirectAttributes redirectAttributes) {
+        Casting casting = castingService.getCastingsByDrawing(drawing);
+        casting.getModls().add(new ModelCasting(drawing, casting.getModls().size()));
+        casting.getModls().get(casting.getModls().size() - 1).setCasting(casting);
+        castingService.updateCasting(casting);
+        redirectAttributes.addAttribute("drawing", drawing);
+        return "forward:/castingPage";
     }
 
 
     private User getCurrentUser() {
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            throw new RuntimeException("Need to authorise");
+        }
         return (User) SecurityContextHolder
                 .getContext()
                 .getAuthentication()
                 .getPrincipal();
     }
 
-    static boolean isAdmin(User user) {
-        Collection<GrantedAuthority> roles = user.getAuthorities();
-        for (GrantedAuthority auth : roles) {
-            if ("ROLE_ADMIN".equals(auth.getAuthority()))
-                return true;
+    private boolean isAdmin(User user) {
+        if (user != null) {
+            Collection<GrantedAuthority> roles = user.getAuthorities();
+            for (GrantedAuthority auth : roles) {
+                if ("ROLE_ADMIN".equals(auth.getAuthority()))
+                    return true;
+            }
         }
         return false;
     }
