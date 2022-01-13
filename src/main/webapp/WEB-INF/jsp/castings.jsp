@@ -148,7 +148,7 @@
                     <c:if test="${admin}">
                         <td><c:url value="/deleteCasting?id=${casting.id}" var="deleteCasting"/>
                             <form action="${deleteCasting}" method="Post">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Удалить</button>
+                                <button class="btn btn-outline-danger btn-sm" type="submit">Удалить</button>
                             </form>
                         </td>
                     </c:if>

@@ -28,7 +28,7 @@ public class CastingController {
     }
 
     @PostMapping("/saveCasting")
-    private String saveCasting(@RequestParam String name,
+    public String saveCasting(@RequestParam String name,
                                @RequestParam String drawingNumber,
                                @RequestParam(required = false) double castingWeight,
                                @RequestParam(required = false) String steelGrade,
@@ -52,13 +52,13 @@ public class CastingController {
     }
 
     @PostMapping("/addCasting")
-    private String addCasting(Model model) {
+    public String addCasting(Model model) {
         model.addAttribute("admin", isAdmin(getCurrentUser()));
         return "addCasting";
     }
 
     @PostMapping("/castingPage")
-    private String casting(@RequestParam String drawing,
+    public String casting(@RequestParam String drawing,
                            Model model) {
         Casting casting = castingService.getCastingsByDrawing(drawing);
         model.addAttribute("casting", casting);
@@ -68,7 +68,7 @@ public class CastingController {
 
 
     @GetMapping("/allCastings")
-    private String showAllCastings(@RequestParam(required = false) String type,
+    public String showAllCastings(@RequestParam(required = false) String type,
                                    @RequestParam(required = false) String shop,
                                    Model model) {
         List<Casting> castings;
@@ -87,14 +87,14 @@ public class CastingController {
     }
 
     @PostMapping("/deleteCasting")
-    private String deleteCasting(@RequestParam Long id, Model model) {
+    public String deleteCasting(@RequestParam Long id, Model model) {
         castingService.deleteCasting(id);
         model.addAttribute("admin", isAdmin(getCurrentUser()));
-        return "forward:/allCastings";
+        return "redirect:/allCastings";
     }
 
     @GetMapping("/search")
-    private String searchCasting(@RequestParam(required = false) String search, Model model) {
+    public String searchCasting(@RequestParam(required = false) String search, Model model) {
         if (search.equals(""))
             return "forward:/allCastings";
         List<Casting> castings = castingService.searchCastings(search);
@@ -105,7 +105,7 @@ public class CastingController {
     }
 
     @PostMapping("/update")
-    private String update(@RequestParam String drawing,
+    public String update(@RequestParam String drawing,
                           @RequestParam(required = false) String name,
                           @RequestParam(required = false) String castingWeight,
                           RedirectAttributes redirectAttributes) {
@@ -128,7 +128,7 @@ public class CastingController {
     }
 
     @PostMapping("/addModel")
-    private String addModel(@RequestParam String drawing,
+    public String addModel(@RequestParam String drawing,
                             RedirectAttributes redirectAttributes) {
         Casting casting = castingService.getCastingsByDrawing(drawing);
         casting.getModls().add(new ModelCasting(drawing, casting.getModls().size()));

@@ -24,7 +24,7 @@ public class MyController {
     }
 
     @GetMapping("/")
-    private String index(Model model){
+    public String index(Model model){
         User user = getCurrentUser();
         String login = user.getUsername();
         model.addAttribute("login", login);
@@ -34,14 +34,14 @@ public class MyController {
     }
 
     @GetMapping(value = "/allUsers")
-    private String update(Model model) {
+    public String update(Model model) {
         List<CustomUser> users = userService.getAllUsers();
         model.addAttribute("users", users);
         return "users";
     }
 
     @PostMapping(value = "/newuser")
-    private String update(@RequestParam String login,
+    public String update(@RequestParam String login,
                          @RequestParam String password,
                          Model model) {
         String passHash = passwordEncoder.encode(password);
@@ -55,14 +55,21 @@ public class MyController {
     }
 
     @GetMapping("/login")
-    private String loginPage() {
+    public String loginPage() {
         return "login";
     }
 
     @GetMapping("/register")
-    private String register() {
+    public String register() {
         return "register";
     }
+
+    @PostMapping("/deleteUser")
+    public String deleteUser(@RequestParam Long id, Model model) {
+        userService.deleteUser(id);
+        model.addAttribute("admin", isAdmin(getCurrentUser()));
+        return "redirect:/allUsers";
+        }
 
     private User getCurrentUser() {
         return (User)SecurityContextHolder
@@ -71,7 +78,7 @@ public class MyController {
                 .getPrincipal();
     }
 
-    static boolean isAdmin(User user) {
+    private boolean isAdmin(User user) {
         Collection<GrantedAuthority> roles = user.getAuthorities();
         for (GrantedAuthority auth : roles) {
             if ("ROLE_ADMIN".equals(auth.getAuthority()))
