@@ -1,1 +1,1 @@
-web: ./
+web: java -jar target/casting-bank-1.0.0.jar
