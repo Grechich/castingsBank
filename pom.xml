@@ -7,7 +7,7 @@
     <groupId>com.gmail.grechich</groupId>
     <artifactId>castingsBank</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>castingBank Maven Webapp</name>
     <url>http://maven.apache.org</url>
 

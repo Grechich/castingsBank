@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/castingsBank-1.0-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -war target/castingsBank-1.0-SNAPSHOT.war
