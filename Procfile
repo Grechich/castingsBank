@@ -1,1 +1,1 @@
-web: java -jar target/casting-bank-1.0.0.jar
+web: java -war castingsBank-1.0-SNAPSHOT.war
