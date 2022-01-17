@@ -6,9 +6,9 @@
 
     <groupId>com.gmail.grechich</groupId>
     <artifactId>castingsBank</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
-    <name>castingBank Maven Webapp</name>
+    <name>castingBank</name>
     <url>http://maven.apache.org</url>
 
     <parent>
@@ -18,8 +18,8 @@
     </parent>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 
