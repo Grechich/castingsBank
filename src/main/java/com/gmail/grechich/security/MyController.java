@@ -9,11 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 import java.util.List;
 
-@Controller
+@RestController
 public class MyController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
@@ -56,9 +57,7 @@ public class MyController {
 
     @GetMapping("/login")
     public String loginPage() {
-
-        String l = "login";
-        return l;
+        return "login";
     }
 
     @GetMapping("/register")
