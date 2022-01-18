@@ -25,12 +25,12 @@ public class MyController {
 
     @GetMapping("/")
     public String index(Model model){
-//        User user = getCurrentUser();
-//        String login = user.getUsername();
-//        model.addAttribute("login", login);
-//        model.addAttribute("roles", user.getAuthorities());
-//        model.addAttribute("admin", isAdmin(user));
-        return "login";
+        User user = getCurrentUser();
+        String login = user.getUsername();
+        model.addAttribute("login", login);
+        model.addAttribute("roles", user.getAuthorities());
+        model.addAttribute("admin", isAdmin(user));
+        return "index";
     }
 
     @GetMapping(value = "/allUsers")
