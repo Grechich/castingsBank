@@ -25,12 +25,12 @@ public class MyController {
 
     @GetMapping("/")
     public String index(Model model){
-        User user = getCurrentUser();
-        String login = user.getUsername();
-        model.addAttribute("login", login);
-        model.addAttribute("roles", user.getAuthorities());
-        model.addAttribute("admin", isAdmin(user));
-        return "index";
+//        User user = getCurrentUser();
+//        String login = user.getUsername();
+//        model.addAttribute("login", login);
+//        model.addAttribute("roles", user.getAuthorities());
+//        model.addAttribute("admin", isAdmin(user));
+        return "error";
     }
 
     @GetMapping(value = "/allUsers")
@@ -56,7 +56,7 @@ public class MyController {
 
     @GetMapping("/login")
     public String login() {
-        return "loginP";
+        return "error";
     }
 
     @GetMapping("/register")
