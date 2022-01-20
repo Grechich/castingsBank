@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@SequenceGenerator(name="my_seq", initialValue=1, allocationSize=1)
 @Table(name = "casting")
 @Data
 @NoArgsConstructor
 public class Casting {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
+    @SequenceGenerator(name="my_seq", initialValue=1, allocationSize=1)
     @Column(name = "id", nullable = false)
     private Long id;
 
