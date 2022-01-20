@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Data @NoArgsConstructor
 public class CustomUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "castingGenerator")
     private Long id;
 
     private String login;

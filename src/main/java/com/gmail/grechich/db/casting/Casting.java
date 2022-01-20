@@ -19,8 +19,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Casting {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
-    @SequenceGenerator(name="my_seq", initialValue=1, allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "castingGenerator")
+    @SequenceGenerator(name="castingGenerator", sequenceName = "my_seq", initialValue=1, allocationSize=1)
     @Column(name = "id", nullable = false)
     private Long id;
 

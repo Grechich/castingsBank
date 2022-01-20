@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Documentation {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "castingGenerator")
     @Column(name = "id", nullable = false)
     private Long id;
 
