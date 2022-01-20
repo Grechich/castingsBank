@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class ModelCasting {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
     @Column(name = "modelId", nullable = false)
     private Long modelId;
 
