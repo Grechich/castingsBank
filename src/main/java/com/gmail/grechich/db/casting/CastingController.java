@@ -58,7 +58,7 @@ public class CastingController {
     }
 
     @PostMapping("/castingPage")
-    public String casting(@RequestParam String drawing,
+    public String casting(@RequestParam(required = false) String drawing,
                            Model model) {
         Casting casting = castingService.getCastingsByDrawing(drawing);
         model.addAttribute("casting", casting);
