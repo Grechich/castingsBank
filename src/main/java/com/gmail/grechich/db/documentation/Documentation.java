@@ -26,11 +26,11 @@ public class Documentation {
     private String passportBlank;
 
     public Documentation(String drawing) {
-//        this.detailDrawing = "../../docs/drawings/" + drawing + "/detail_drawing_" + drawing + ".jpg";
-//        this.detailDrawing3D = "../../docs/drawings/" + drawing + "/detail_drawing_" + drawing + "3d.zip";
-//        this.castingDrawing = "../../docs/drawings/" + drawing + "/casting_drawing_" + drawing + ".jpg";
-//        this.castingDrawing3D = "../../docs/drawings/" + drawing + "/casting_drawing_" + drawing + "3d.zip";
-//        this.installationDrawing = "../../docs/drawings/" + drawing + "/installation_drawing_" + drawing + ".jpg";
-//        this.passportBlank = "../../docs/drawings/" + drawing + "/passport_" + drawing + ".jpg";
+        this.detailDrawing = "../../docs/drawings/" + drawing + "/detail_drawing_" + drawing + ".jpg";
+        this.detailDrawing3D = "../../docs/drawings/" + drawing + "/detail_drawing_" + drawing + "3d.zip";
+        this.castingDrawing = "../../docs/drawings/" + drawing + "/casting_drawing_" + drawing + ".jpg";
+        this.castingDrawing3D = "../../docs/drawings/" + drawing + "/casting_drawing_" + drawing + "3d.zip";
+        this.installationDrawing = "../../docs/drawings/" + drawing + "/installation_drawing_" + drawing + ".jpg";
+        this.passportBlank = "../../docs/drawings/" + drawing + "/passport_" + drawing + ".jpg";
     }
 }
