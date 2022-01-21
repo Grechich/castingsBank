@@ -29,8 +29,7 @@ public class AppConfig extends GlobalMethodSecurityConfiguration {
             @Override
             public void run(String... strings) throws Exception {
                 userService.addUser(ADMIN,
-//                        encoder.encode("111"),
-                        "111",
+                        encoder.encode("111"),
                         UserRole.ADMIN);
 //
 //                userService.addUser(USER,
