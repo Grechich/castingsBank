@@ -111,88 +111,88 @@
     <table class="table table-striped table-light">
         <tr>
             <td>Название:</td>
-            <td><c:out value="${casting.name}"/></td>
-            <c:if test="${admin}">
-                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>
-                <td>
-                    <form action="${update}" method="Post">
-                        <input type="text" name="name" value="${casting.name}">
-                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>
-                    </form>
-                </td>
-            </c:if>
+<%--            <td><c:out value="${casting.name}"/></td>--%>
+<%--            <c:if test="${admin}">--%>
+<%--                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>--%>
+<%--                <td>--%>
+<%--                    <form action="${update}" method="Post">--%>
+<%--                        <input type="text" name="name" value="${casting.name}">--%>
+<%--                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>--%>
+<%--                    </form>--%>
+<%--                </td>--%>
+<%--            </c:if>--%>
         </tr>
-        <tr>
-            <td>Цех:</td>
-            <td><c:out value="${casting.castingShopEnum.getShopName()}"/></td>
-        </tr>
-        <tr>
-            <td>Тип:</td>
-            <td><c:out value="${casting.castingTypeEnum.getType()}"/></td>
-        </tr>
-        <tr>
-            <td>Рельс:</td>
-            <td><c:out value="${casting.castingRailEnum.getRailName()}"/></td>
-        </tr>
-        <tr>
-            <td>Масса:</td>
-            <td><c:out value="${casting.castingWeight}"/></td>
-            <c:if test="${admin}">
-                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>
-                <td>
-                    <form action="${update}" method="Post">
-                        <input type="text" name="castingWeight" value="${casting.castingWeight}">
-                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>
-                    </form>
-                </td>
-            </c:if>
-        </tr>
-        <tr>
-            <td>Марка стали:</td>
-            <td><c:out value="${casting.steelGrade.getSteelGrate()}"/></td>
-        </tr>
-        <tr>
-            <td>Чертеж детали:</td>
-            <td><a href="<c:out value="${casting.documentation.detailDrawing}"/>" target="_blank">Открыть</a></td>
-        </tr>
-        <tr>
-            <td>Чертеж отливки:</td>
-            <td><a href="<c:out value="${casting.documentation.castingDrawing}"/>" target="_blank">Открыть</a></td>
-        </tr>
-        <tr>
-            <td>Монтажные чертежи:</td>
-            <td><a href="<c:out value="${casting.documentation.installationDrawing}"/>" target="_blank">Открыть</a></td>
-        </tr>
-        <tr>
-            <td>Паспорт отливки:</td>
-            <td><a href="<c:out value="${casting.documentation.passportBlank}"/>" target="_blank">Открыть</a></td>
-        </tr>
-        <tr>
-            <td>Чертеж детали 3Д:</td>
-            <td><a href="<c:out value="${casting.documentation.detailDrawing3D}"/>" target="_blank">Скачать</a></td>
-        </tr>
-        <tr>
-            <td>Чертеж отливки 3Д:</td>
-            <td><a href="<c:out value="${casting.documentation.castingDrawing3D}"/>" target="_blank">Скачать</a></td>
-        </tr>
-        <c:forEach items="${casting.modls}" var="modl">
-            <tr>
-                <td>3Д модель ${modl.modelId}:</td>
-                <td><a href="<c:out value="${modl.modelDrawing3D}"/>" download="">Скачать</a></td>
-            </tr>
-        </c:forEach>
+<%--        <tr>--%>
+<%--            <td>Цех:</td>--%>
+<%--            <td><c:out value="${casting.castingShopEnum.getShopName()}"/></td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Тип:</td>--%>
+<%--            <td><c:out value="${casting.castingTypeEnum.getType()}"/></td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Рельс:</td>--%>
+<%--            <td><c:out value="${casting.castingRailEnum.getRailName()}"/></td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Масса:</td>--%>
+<%--            <td><c:out value="${casting.castingWeight}"/></td>--%>
+<%--            <c:if test="${admin}">--%>
+<%--                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>--%>
+<%--                <td>--%>
+<%--                    <form action="${update}" method="Post">--%>
+<%--                        <input type="text" name="castingWeight" value="${casting.castingWeight}">--%>
+<%--                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>--%>
+<%--                    </form>--%>
+<%--                </td>--%>
+<%--            </c:if>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Марка стали:</td>--%>
+<%--            <td><c:out value="${casting.steelGrade.getSteelGrate()}"/></td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Чертеж детали:</td>--%>
+<%--            <td><a href="<c:out value="${casting.documentation.detailDrawing}"/>" target="_blank">Открыть</a></td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Чертеж отливки:</td>--%>
+<%--            <td><a href="<c:out value="${casting.documentation.castingDrawing}"/>" target="_blank">Открыть</a></td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Монтажные чертежи:</td>--%>
+<%--            <td><a href="<c:out value="${casting.documentation.installationDrawing}"/>" target="_blank">Открыть</a></td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Паспорт отливки:</td>--%>
+<%--            <td><a href="<c:out value="${casting.documentation.passportBlank}"/>" target="_blank">Открыть</a></td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Чертеж детали 3Д:</td>--%>
+<%--            <td><a href="<c:out value="${casting.documentation.detailDrawing3D}"/>" target="_blank">Скачать</a></td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>Чертеж отливки 3Д:</td>--%>
+<%--            <td><a href="<c:out value="${casting.documentation.castingDrawing3D}"/>" target="_blank">Скачать</a></td>--%>
+<%--        </tr>--%>
+<%--        <c:forEach items="${casting.modls}" var="modl">--%>
+<%--            <tr>--%>
+<%--                <td>3Д модель ${modl.modelId}:</td>--%>
+<%--                <td><a href="<c:out value="${modl.modelDrawing3D}"/>" download="">Скачать</a></td>--%>
+<%--            </tr>--%>
+<%--        </c:forEach>--%>
 
-        <c:if test="${admin}">
-            <c:url value="/addModel?drawing=${casting.drawingNumber}" var="addModel"/>
-            <tr>
-                <td>Добавить 3Д модель:</td>
-                <td>
-                    <form action="${addModel}" method="Post">
-                        <button class="btn btn-outline-success btn-sm" type="submit">Добавить</button>
-                    </form>
-                </td>
-            </tr>
-        </c:if>
+<%--        <c:if test="${admin}">--%>
+<%--            <c:url value="/addModel?drawing=${casting.drawingNumber}" var="addModel"/>--%>
+<%--            <tr>--%>
+<%--                <td>Добавить 3Д модель:</td>--%>
+<%--                <td>--%>
+<%--                    <form action="${addModel}" method="Post">--%>
+<%--                        <button class="btn btn-outline-success btn-sm" type="submit">Добавить</button>--%>
+<%--                    </form>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--        </c:if>--%>
     </table>
 </div>
 <!--Data-->
