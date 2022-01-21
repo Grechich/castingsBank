@@ -31,9 +31,9 @@ public class AppConfig extends GlobalMethodSecurityConfiguration {
                 userService.addUser(ADMIN,
                         encoder.encode("111"),
                         UserRole.ADMIN);
-                userService.addUser(USER,
-                        encoder.encode("111"),
-                        UserRole.USER);
+//                userService.addUser(USER,
+//                        encoder.encode("111"),
+//                        UserRole.USER);
             }
         };
     }
