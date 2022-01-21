@@ -22,21 +22,21 @@ public class AppConfig extends GlobalMethodSecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public CommandLineRunner demo(final UserService userService,
-                                  final PasswordEncoder encoder) {
-        return new CommandLineRunner() {
-            @Override
-            public void run(String... strings) throws Exception {
-                userService.addUser(ADMIN,
-                        encoder.encode("111"),
-                        UserRole.ADMIN);
-
-                userService.addUser(USER,
-                        encoder.encode("111"),
-                        UserRole.USER);
-            }
-        };
-    }
+//    @Bean
+//    public CommandLineRunner demo(final UserService userService,
+//                                  final PasswordEncoder encoder) {
+//        return new CommandLineRunner() {
+//            @Override
+//            public void run(String... strings) throws Exception {
+//                userService.addUser(ADMIN,
+//                        encoder.encode("111"),
+//                        UserRole.ADMIN);
+//
+//                userService.addUser(USER,
+//                        encoder.encode("111"),
+//                        UserRole.USER);
+//            }
+//        };
+//    }
 
 }
