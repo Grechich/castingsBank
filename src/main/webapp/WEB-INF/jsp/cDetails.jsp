@@ -112,109 +112,109 @@
 </nav>
 <!--Menu-->
 
-<%--<!--Data-->--%>
-<%--<div class="container">--%>
-<%--    <table class="table table-striped table-light">--%>
-<%--        <tr>--%>
-<%--            <td>Название:</td>--%>
-<%--&lt;%&ndash;            <td><c:out value="${casting.name}"/></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <c:if test="${admin}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <form action="${update}" method="Post">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        <input type="text" name="name" value="${casting.name}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </form>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                </td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            </c:if>&ndash;%&gt;--%>
-<%--        </tr>--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Цех:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><c:out value="${casting.castingShopEnum.getShopName()}"/></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Тип:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><c:out value="${casting.castingTypeEnum.getType()}"/></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Рельс:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><c:out value="${casting.castingRailEnum.getRailName()}"/></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Масса:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><c:out value="${casting.castingWeight}"/></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <c:if test="${admin}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <form action="${update}" method="Post">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        <input type="text" name="castingWeight" value="${casting.castingWeight}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </form>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                </td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            </c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Марка стали:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><c:out value="${casting.steelGrade.getSteelGrate()}"/></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Чертеж детали:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><a href="<c:out value="${casting.documentation.detailDrawing}"/>" target="_blank">Открыть</a></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Чертеж отливки:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><a href="<c:out value="${casting.documentation.castingDrawing}"/>" target="_blank">Открыть</a></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Монтажные чертежи:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><a href="<c:out value="${casting.documentation.installationDrawing}"/>" target="_blank">Открыть</a></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Паспорт отливки:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><a href="<c:out value="${casting.documentation.passportBlank}"/>" target="_blank">Открыть</a></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Чертеж детали 3Д:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><a href="<c:out value="${casting.documentation.detailDrawing3D}"/>" target="_blank">Скачать</a></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td>Чертеж отливки 3Д:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><a href="<c:out value="${casting.documentation.castingDrawing3D}"/>" target="_blank">Скачать</a></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <c:forEach items="${casting.modls}" var="modl">&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <td>3Д модель ${modl.modelId}:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <td><a href="<c:out value="${modl.modelDrawing3D}"/>" download="">Скачать</a></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </c:forEach>&ndash;%&gt;--%>
+<!--Data-->
+<div class="container">
+    <table class="table table-striped table-light">
+        <tr>
+            <td>Название:</td>
+            <td><c:out value="${casting.name}"/></td>
+            <c:if test="${admin}">
+                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>
+                <td>
+                    <form action="${update}" method="Post">
+                        <input type="text" name="name" value="${casting.name}">
+                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>
+                    </form>
+                </td>
+            </c:if>
+        </tr>
+        <tr>
+            <td>Цех:</td>
+            <td><c:out value="${casting.castingShopEnum.getShopName()}"/></td>
+        </tr>
+        <tr>
+            <td>Тип:</td>
+            <td><c:out value="${casting.castingTypeEnum.getType()}"/></td>
+        </tr>
+        <tr>
+            <td>Рельс:</td>
+            <td><c:out value="${casting.castingRailEnum.getRailName()}"/></td>
+        </tr>
+        <tr>
+            <td>Масса:</td>
+            <td><c:out value="${casting.castingWeight}"/></td>
+            <c:if test="${admin}">
+                <c:url value="/update?drawing=${casting.drawingNumber}" var="update"/>
+                <td>
+                    <form action="${update}" method="Post">
+                        <input type="text" name="castingWeight" value="${casting.castingWeight}">
+                        <button class="btn btn-outline-warning btn-sm" type="submit">Изменить</button>
+                    </form>
+                </td>
+            </c:if>
+        </tr>
+        <tr>
+            <td>Марка стали:</td>
+            <td><c:out value="${casting.steelGrade.getSteelGrate()}"/></td>
+        </tr>
+        <tr>
+            <td>Чертеж детали:</td>
+            <td><a href="<c:out value="${casting.documentation.detailDrawing}"/>" target="_blank">Открыть</a></td>
+        </tr>
+        <tr>
+            <td>Чертеж отливки:</td>
+            <td><a href="<c:out value="${casting.documentation.castingDrawing}"/>" target="_blank">Открыть</a></td>
+        </tr>
+        <tr>
+            <td>Монтажные чертежи:</td>
+            <td><a href="<c:out value="${casting.documentation.installationDrawing}"/>" target="_blank">Открыть</a></td>
+        </tr>
+        <tr>
+            <td>Паспорт отливки:</td>
+            <td><a href="<c:out value="${casting.documentation.passportBlank}"/>" target="_blank">Открыть</a></td>
+        </tr>
+        <tr>
+            <td>Чертеж детали 3Д:</td>
+            <td><a href="<c:out value="${casting.documentation.detailDrawing3D}"/>" target="_blank">Скачать</a></td>
+        </tr>
+        <tr>
+            <td>Чертеж отливки 3Д:</td>
+            <td><a href="<c:out value="${casting.documentation.castingDrawing3D}"/>" target="_blank">Скачать</a></td>
+        </tr>
+        <c:forEach items="${casting.modls}" var="modl">
+            <tr>
+                <td>3Д модель ${modl.modelId}:</td>
+                <td><a href="<c:out value="${modl.modelDrawing3D}"/>" download="">Скачать</a></td>
+            </tr>
+        </c:forEach>
 
-<%--&lt;%&ndash;        <c:if test="${admin}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <c:url value="/addModel?drawing=${casting.drawingNumber}" var="addModel"/>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <td>Добавить 3Д модель:</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <form action="${addModel}" method="Post">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        <button class="btn btn-outline-success btn-sm" type="submit">Добавить</button>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </form>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                </td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </c:if>&ndash;%&gt;--%>
-<%--    </table>--%>
-<%--</div>--%>
-<%--<!--Data-->--%>
+        <c:if test="${admin}">
+            <c:url value="/addModel?drawing=${casting.drawingNumber}" var="addModel"/>
+            <tr>
+                <td>Добавить 3Д модель:</td>
+                <td>
+                    <form action="${addModel}" method="Post">
+                        <button class="btn btn-outline-success btn-sm" type="submit">Добавить</button>
+                    </form>
+                </td>
+            </tr>
+        </c:if>
+    </table>
+</div>
+<!--Data-->
 
-<%--<div class="footer text-center">--%>
-<%--    <div class="btn-group" role="group" aria-label="Basic example">--%>
-<%--        <c:url value="/logout" var="logoutUrl"/>--%>
-<%--        <form action="${logoutUrl}">--%>
-<%--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">logout</button>--%>
-<%--        </form>--%>
-<%--        <c:url value="/" var="index"/>--%>
-<%--        <form action="${index}">--%>
-<%--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>--%>
-<%--        </form>--%>
-<%--    </div>--%>
-<%--</div>--%>
+<div class="footer text-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <c:url value="/logout" var="logoutUrl"/>
+        <form action="${logoutUrl}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">logout</button>
+        </form>
+        <c:url value="/" var="index"/>
+        <form action="${index}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
+        </form>
+    </div>
+</div>
 </body>
 <link rel="stylesheet" type="text/css" href="../../style.css">
 
