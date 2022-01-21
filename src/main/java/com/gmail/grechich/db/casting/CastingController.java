@@ -63,7 +63,7 @@ public class CastingController {
         Casting casting = castingService.getCastingsByDrawing(drawing);
         model.addAttribute("casting", casting);
         model.addAttribute("admin", isAdmin(getCurrentUser()));
-        return "сastingPage1";
+        return "cDetails";
     }
 
 
