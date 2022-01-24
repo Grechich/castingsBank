@@ -10,7 +10,6 @@ import java.util.List;
 public class CastingService {
 
     private final CastingRepository castingRepository;
-
     public CastingService(CastingRepository castingRepository) {
         this.castingRepository = castingRepository;
     }
@@ -53,5 +52,4 @@ public class CastingService {
     public void updateCasting(Casting casting){
         castingRepository.saveAndFlush(casting);
     }
-
 }

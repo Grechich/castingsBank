@@ -24,10 +24,8 @@ public class Casting {
     @Column(name = "id", nullable = false)
     private Long id;
 
-
     private String name;
     private String drawingNumber;
-
     private double castingWeight;
     private Enum<SteelGrade> steelGrade;
     private Enum<CastingType> castingTypeEnum;

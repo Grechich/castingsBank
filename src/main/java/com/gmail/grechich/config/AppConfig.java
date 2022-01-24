@@ -13,29 +13,29 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AppConfig extends GlobalMethodSecurityConfiguration {
-
-    public static final String ADMIN = "admin";
-    public static final String USER = "user";
+//
+//    public static final String ADMIN = "admin";
+//    public static final String USER = "user";
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public CommandLineRunner demo(final UserService userService,
-                                  final PasswordEncoder encoder) {
-        return new CommandLineRunner() {
-            @Override
-            public void run(String... strings) throws Exception {
-                userService.addUser(ADMIN,
-                        encoder.encode("111"),
-                        UserRole.ADMIN);
-                userService.addUser(USER,
-                        encoder.encode("111"),
-                        UserRole.USER);
-            }
-        };
-    }
+//    @Bean
+//    public CommandLineRunner demo(final UserService userService,
+//                                  final PasswordEncoder encoder) {
+//        return new CommandLineRunner() {
+//            @Override
+//            public void run(String... strings) throws Exception {
+//                userService.addUser(ADMIN,
+//                        encoder.encode("111"),
+//                        UserRole.ADMIN);
+//                userService.addUser(USER,
+//                        encoder.encode("111"),
+//                        UserRole.USER);
+//            }
+//        };
+//    }
 
 }
